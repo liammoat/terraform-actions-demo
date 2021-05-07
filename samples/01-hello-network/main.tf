@@ -5,8 +5,21 @@ terraform {
       version = "=2.46.0"
     }
   }
+
+  backend "azurerm" {
+    resource_group_name  = "lm-devops-rg"
+    storage_account_name = "lmdevopssa"
+    container_name       = "terraform-actions-demo"
+    key                  = "01-hello-network.tfstate"
+  }
 }
 
+# Configure the Microsoft Azure Provider
+provider "azurerm" {
+  features {}
+}
+
+# Define local variables
 locals {
   prefix = "hello-network"
 
@@ -14,11 +27,6 @@ locals {
     owner = "terraform"
     demo  = "01-hello-network"
   }
-}
-
-# Configure the Microsoft Azure Provider
-provider "azurerm" {
-  features {}
 }
 
 # Create a resource group
