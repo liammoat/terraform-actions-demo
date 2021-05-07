@@ -1,4 +1,4 @@
-name: "01_Hello Network"
+name: "01_PR Workflow"
 
 on:
   push:
