@@ -32,14 +32,14 @@ locals {
 
 # Create a resource group
 resource "azurerm_resource_group" "default" {
-  name     = "${local.prefix}-rg-${terraform.workspace}"
+  name     = "${local.prefix}-rg"
   location = var.location
   tags     = local.tags
 }
 
 # Create a virtual network within the resource group
 resource "azurerm_virtual_network" "default" {
-  name                = "${local.prefix}-vnet-${terraform.workspace}"
+  name                = "${local.prefix}-vnet"
   resource_group_name = azurerm_resource_group.default.name
   location            = azurerm_resource_group.default.location
   address_space       = ["10.0.0.0/16"]
