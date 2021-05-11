@@ -1,4 +1,4 @@
-name: "01_PR Workflow"
+name: "02_PR Workflow"
 
 on:
   push:

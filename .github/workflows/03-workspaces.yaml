@@ -1,0 +1,75 @@
+name: "03_Workspaces"
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workloads/03-workspaces.yaml"
+      - "samples/03-workspaces/**"
+
+env:
+  ARM_CLIENT_ID: "${{ secrets.ARM_CLIENT_ID }}"
+  ARM_CLIENT_SECRET: "${{ secrets.ARM_CLIENT_SECRET }}"
+  ARM_SUBSCRIPTION_ID: "${{ secrets.ARM_SUBSCRIPTION_ID }}"
+  ARM_TENANT_ID: "${{ secrets.ARM_TENANT_ID }}"
+  ARM_SKIP_PROVIDER_REGISTRATION: true
+
+defaults:
+  run:
+    shell: bash
+    working-directory: samples/03-workspaces
+
+jobs:
+  deploy_dev:
+    name: "Deploy Dev"
+    environment: dev
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Terraform 
+        run: ./scripts/deploy.sh
+        env:
+          DEPLOY_WORKSPACE: dev
+
+  deploy_test:
+    name: "Deploy Test"
+    environment: test
+    needs: deploy_dev
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Terraform 
+        run: ./scripts/deploy.sh
+        env:
+          DEPLOY_WORKSPACE: test
+
+  deploy_prod:
+    name: "Deploy Prod"
+    environment: prod
+    needs: deploy_test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Terraform 
+        run: ./scripts/deploy.sh
+        env:
+          DEPLOY_WORKSPACE: prod
