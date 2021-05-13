@@ -22,7 +22,7 @@ provider "azurerm" {
 
 # Define local variables
 locals {
-  prefix = "hello-network"
+  prefix = "vm-deploy"
 
   tags = {
     owner = "terraform"
