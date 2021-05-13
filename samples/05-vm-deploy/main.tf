@@ -83,7 +83,7 @@ resource "azurerm_linux_virtual_machine" "default" {
   source_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
-    sku       = "16.04-LTS"
+    sku       = "18.04-LTS"
     version   = "latest"
   }
 }
