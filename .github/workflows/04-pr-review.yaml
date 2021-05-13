@@ -66,9 +66,14 @@ jobs:
         run: terraform init
 
       - name: Terraform Workspace
-        run: terraform workspace select $DEPLOY_WORKSPACE || terraform workspace new $DEPLOY_WORKSPACE
+        run: terraform workspace select $DEPLOY_WORKSPACE
         env:
           DEPLOY_WORKSPACE: ${{ format('pr{0}', github.event.number) }}
 
       - name: Terraform Destroy
         run: terraform destroy -auto-approve
+
+      - name: Terraform Delete Workspace
+        run: terraform workspace delete $DEPLOY_WORKSPACE
+        env:
+          DEPLOY_WORKSPACE: ${{ format('pr{0}', github.event.number) }}
