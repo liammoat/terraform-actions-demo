@@ -70,6 +70,7 @@ resource "azurerm_linux_virtual_machine" "default" {
   size                = "Standard_F2"
   admin_username      = "adminuser"
   admin_password      = var.admin_password
+  disable_password_authentication = false
 
   network_interface_ids = [
     azurerm_network_interface.default.id,
