@@ -53,11 +53,3 @@ resource "azurerm_subnet" "example" {
   virtual_network_name = azurerm_virtual_network.default.name
   address_prefixes     = ["10.0.1.0/24"]
 }
-
-# Create a subnet with the virtual network
-resource "azurerm_subnet" "example2" {
-  name                 = "default2"
-  resource_group_name  = azurerm_resource_group.default.name
-  virtual_network_name = azurerm_virtual_network.default.name
-  address_prefixes     = ["10.0.2.0/24"]
-}
