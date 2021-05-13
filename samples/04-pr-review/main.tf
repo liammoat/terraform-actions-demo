@@ -53,3 +53,24 @@ resource "azurerm_subnet" "example" {
   virtual_network_name = azurerm_virtual_network.default.name
   address_prefixes     = ["10.0.1.0/24"]
 }
+
+# Create a new network security group
+resource "azurerm_network_security_group" "example" {
+  name                = "${local.prefix}-nsg-${terraform.workspace}"
+  resource_group_name = azurerm_resource_group.default.name
+  location            = azurerm_resource_group.default.location
+
+  security_rule {
+    name                       = "test123"
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "*"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
+  tags = local.tags
+}
