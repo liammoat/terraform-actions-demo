@@ -37,7 +37,7 @@ jobs:
         run: terraform init
 
       - name: Terraform Workspace
-        run: terraform workspace new $DEPLOY_WORKSPACE || true
+        run: terraform workspace select $DEPLOY_WORKSPACE || terraform workspace new $DEPLOY_WORKSPACE
         env:
           DEPLOY_WORKSPACE: ${{ format('pr{0}', github.event.number) }}
 
