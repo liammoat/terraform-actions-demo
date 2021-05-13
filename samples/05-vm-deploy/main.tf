@@ -64,12 +64,12 @@ resource "azurerm_network_interface" "default" {
 
 # Create a Linux VM resource
 resource "azurerm_linux_virtual_machine" "default" {
-  name                = "${local.prefix}-vm"
-  location            = azurerm_resource_group.default.location
-  resource_group_name = azurerm_resource_group.default.name
-  size                = "Standard_F2"
-  admin_username      = "adminuser"
-  admin_password      = var.admin_password
+  name                            = "${local.prefix}-vm"
+  location                        = azurerm_resource_group.default.location
+  resource_group_name             = azurerm_resource_group.default.name
+  size                            = "Standard_F2"
+  admin_username                  = "adminuser"
+  admin_password                  = var.admin_password
   disable_password_authentication = false
 
   network_interface_ids = [
