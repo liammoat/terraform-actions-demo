@@ -55,7 +55,7 @@ resource "azurerm_subnet" "example" {
 }
 
 # Create a subnet with the virtual network
-resource "azurerm_subnet" "example" {
+resource "azurerm_subnet" "example2" {
   name                 = "default2"
   resource_group_name  = azurerm_resource_group.default.name
   virtual_network_name = azurerm_virtual_network.default.name
