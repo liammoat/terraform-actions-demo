@@ -25,8 +25,10 @@ locals {
   prefix = "pr-review"
 
   tags = {
-    owner = "terraform"
-    demo  = "04-pr-review"
+    owner  = "terraform"
+    demo   = "04-pr-review"
+    foo    = "bar"
+    "test" = "goodbye-world"
   }
 }
 
