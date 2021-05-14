@@ -45,3 +45,23 @@ resource "azurerm_virtual_network" "default" {
   address_space       = ["10.0.0.0/16"]
   tags                = local.tags
 }
+
+resource "azurerm_network_security_group" "default" {
+  name                = "defaultnsg"
+  resource_group_name = azurerm_resource_group.default.name
+  location            = azurerm_resource_group.default.location
+
+  security_rule {
+    name                       = "test123"
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "*"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
+  tags = local.tags
+}
