@@ -28,7 +28,7 @@ locals {
     owner  = "terraform"
     demo   = "04-pr-review"
     foo    = "bar"
-    "test" = "hello-world"
+    "test" = "goodbye-world"
   }
 }
 
