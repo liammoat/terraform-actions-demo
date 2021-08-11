@@ -37,7 +37,7 @@ resource "azurerm_resource_group" "default" {
   tags     = local.tags
 }
 
-# Create a virtual network within the resource group
+# Create a virtual network within the resource group  
 resource "azurerm_virtual_network" "default" {
   name                = "${local.prefix}-vnet-${terraform.workspace}"
   resource_group_name = azurerm_resource_group.default.name
