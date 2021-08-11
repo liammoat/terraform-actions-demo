@@ -46,7 +46,7 @@ resource "azurerm_virtual_network" "default" {
   tags                = local.tags
 }
 
-# Create a subnet with the virtual network
+# Create a subnet with the virtual network 
 resource "azurerm_subnet" "default" {
   name                 = "default"
   resource_group_name  = azurerm_resource_group.default.name
