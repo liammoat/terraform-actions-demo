@@ -62,7 +62,7 @@ resource "azurerm_network_interface" "default" {
   }
 }
 
-# Create a Linux VM resource
+# Create a Linux VM resource 
 resource "azurerm_linux_virtual_machine" "default" {
   name                            = "${local.prefix}-vm"
   location                        = azurerm_resource_group.default.location
