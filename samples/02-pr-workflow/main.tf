@@ -27,7 +27,6 @@ locals {
   tags = {
     owner = "terraform"
     demo  = "02-pr-workflow"
-    foo   = "bar"
   }
 }
 
