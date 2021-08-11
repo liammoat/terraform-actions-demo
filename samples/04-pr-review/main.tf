@@ -26,7 +26,8 @@ locals {
 
   tags = {
     owner = "terraform"
-    demo  = "04-pr-review"
+    demo  = "04-pr-review",
+    hello = "hello world"
   }
 }
 
