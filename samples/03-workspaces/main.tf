@@ -25,8 +25,9 @@ locals {
   prefix = "workspaces"
 
   tags = {
-    owner = "terraform"
-    demo  = "03-workspaces"
+    owner      = "terraform"
+    demo       = "03-workspaces"
+    costCenter = "1234"
   }
 }
 
